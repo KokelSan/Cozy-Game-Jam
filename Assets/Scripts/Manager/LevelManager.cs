@@ -12,8 +12,9 @@ public class LevelManager : MultipleProblem
         public UnityEvent onWin;
     }
     
-    public LevelManagerEvents LMevents;
+    private LevelManagerEvents LMevents;
     private ObjectManager ObjectManager;
+    Puzzle[] puzzles;
     Puzzle m_CurrentPuzzle;
     public static LevelManager m_Instance;
 
@@ -25,6 +26,21 @@ public class LevelManager : MultipleProblem
             if (m_CurrentPuzzle && value != null)
                 ObjectManager.UnSelectObject(m_CurrentPuzzle);
             m_CurrentPuzzle = value;
+
+            if (m_CurrentPuzzle != null)
+            {
+                foreach (Puzzle puzzle in puzzles)
+                {
+                    puzzle.SetActive(puzzle == m_CurrentPuzzle);
+                }
+            }
+            else
+            {
+                foreach (Puzzle puzzle in puzzles)
+                {
+                    puzzle.SetActive(true);
+                }
+            }
         }
     }
     
@@ -41,6 +57,7 @@ public class LevelManager : MultipleProblem
         m_Instance = this;
         problems = FindObjectsOfType<Problem>().ToList();
         ObjectManager = FindObjectOfType<ObjectManager>();
+        puzzles = FindObjectsOfType<Puzzle>();
         events.onSolved.AddListener(Win);
         LMevents.onStart?.Invoke();
     }

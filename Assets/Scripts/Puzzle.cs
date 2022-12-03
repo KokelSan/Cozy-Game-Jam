@@ -67,17 +67,16 @@ public class Puzzle : Interactive
     public override void Drag(bool isHeld)
     {
         m_IsHeld = isHeld;
-
     }
 
     public override bool IsActive()
     {
-        throw new System.NotImplementedException();
+        return m_Collider.enabled;
     }
 
     public override void SetActive(bool flag)
     {
-        throw new System.NotImplementedException();
+        m_Collider.enabled = flag;
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition, Quaternion targetRotation, float translationTime)

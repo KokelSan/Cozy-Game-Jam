@@ -24,18 +24,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Click",
-                    "type": "Button",
-                    "id": "982eed9a-69c7-4083-9d35-ffbbf808ba16",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Hold",
-                    "type": "Button",
-                    "id": "4c043cad-91a4-41ab-aff4-0818e20e1ed8",
+                    "name": "LeftClick",
+                    "type": "Value",
+                    "id": "6c509c18-0ec2-4ff8-ac32-cdbdfd2f4619",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -155,34 +146,12 @@
                 },
                 {
                     "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
+                    "id": "6a028d99-28a4-4e1b-b6a4-2d697908471b",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "12e18c5b-c3ef-4dd3-9e12-6ac6d4b3db14",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Mouse",
-                    "action": "Hold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b098fdf1-eb4d-49ba-a46e-0b95a41850f7",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "Mouse",
-                    "action": "Hold",
+                    "action": "LeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

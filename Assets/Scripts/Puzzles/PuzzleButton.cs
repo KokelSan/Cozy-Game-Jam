@@ -34,14 +34,6 @@ public class PuzzleButton : Interactive
         events.onTrigger?.Invoke();
     }
 
-    public override void UnSelect()
-    {
-    }
-
-    public override void Drag(bool isHeld)
-    {
-    }
-
     public override bool IsActive()
     {
         return m_Collider.enabled;
