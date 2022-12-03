@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PuzzleObject : MonoBehaviour
+public class PuzzleObject : MonoBehaviour, IInteractive
 {    
     public Vector3 ColliderSizeWhenSelected;
     public float DepthOffsetWhenSelected;
@@ -47,8 +47,14 @@ public class PuzzleObject : MonoBehaviour
     {
         m_Collider.size = m_InitialColliderSize;
         StartCoroutine(MoveToPosition(m_InitialPosition, m_InitialRotation, UnSelectionTranslationDuration));
-    }    
+    }
 
+    public void Drag(bool isHeld)
+    {
+        m_IsHeld = isHeld;
+
+    }
+    
     private IEnumerator MoveToPosition(Vector3 targetPosition, Quaternion targetRotation, float translationTime)
     {
         float step = 0;
@@ -59,10 +65,5 @@ public class PuzzleObject : MonoBehaviour
             transform.rotation = Quaternion.Lerp(m_InitialRotation, targetRotation, step / translationTime);
             yield return new WaitForFixedUpdate();
         }        
-    }
-
-    public void Drag(bool isHeld)
-    {
-        m_IsHeld = isHeld;
     }
 }

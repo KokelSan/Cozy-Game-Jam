@@ -20,25 +20,27 @@ public class InputManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (m_ObjectManager.TryGetCurrentSelectedObject(out PuzzleObject SelectedObject))
+            if (hitInfo.collider.TryGetComponent(out IInteractive interactiveSelected))
             {
-                if (hitInfo.collider.gameObject == SelectedObject.gameObject)
+                if (m_ObjectManager.TryGetCurrentSelectedObject(out IInteractive SelectedObject))
                 {
-                    Debug.Log("Clicking on current puzzle object");
-                    // ObjectManager.Whatever...
+                    if (interactiveSelected == SelectedObject)
+                    {
+                        Debug.Log("Clicking on current puzzle object");
+                        // ObjectManager.Whatever...
+                    }
+                    else
+                    {
+                        m_ObjectManager.UnselectCurrentObject();
+                    }
                 }
                 else
                 {
-                    m_ObjectManager.UnselectCurrentObject();
-                }
-
-            }
-            else
-            {
-                if (hitInfo.collider.TryGetComponent(out PuzzleObject puzzleObject))
-                {
-                    Debug.Log("Selecting a new puzzle object");
-                    m_ObjectManager.SelectObject(puzzleObject);
+                    if (hitInfo.collider.TryGetComponent(out PuzzleObject puzzleObject))
+                    {
+                        Debug.Log("Selecting a new puzzle object");
+                        m_ObjectManager.SelectObject(puzzleObject);
+                    }
                 }
             }
         }
@@ -46,6 +48,7 @@ public class InputManager : MonoBehaviour
         {
             m_ObjectManager.UnselectCurrentObject();
         }
+        
     }
 
     public void OnHold(InputValue input)

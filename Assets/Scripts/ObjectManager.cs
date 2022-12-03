@@ -3,16 +3,16 @@ using UnityEngine.InputSystem;
 
 public class ObjectManager : MonoBehaviour
 {    
-    public PuzzleObject CurrentSelectedObject => m_CurrentSelectedObject;
-    private PuzzleObject m_CurrentSelectedObject = null;
+    public IInteractive CurrentSelectedObject => m_CurrentSelectedObject;
+    private IInteractive m_CurrentSelectedObject = null;
 
-    public bool TryGetCurrentSelectedObject(out PuzzleObject puzzleObject)
+    public bool TryGetCurrentSelectedObject(out IInteractive puzzleObject)
     {
         puzzleObject = m_CurrentSelectedObject;
         return m_CurrentSelectedObject != null;
     }
 
-    public void SelectObject(PuzzleObject puzzleObject)
+    public void SelectObject(IInteractive puzzleObject)
     {
         m_CurrentSelectedObject = puzzleObject;
         m_CurrentSelectedObject.Select();
@@ -20,7 +20,7 @@ public class ObjectManager : MonoBehaviour
 
     public void UnselectCurrentObject()
     {
-        if (m_CurrentSelectedObject)
+        if (m_CurrentSelectedObject != null)
         {
             Debug.Log("UnSelecting current puzzle object");
             m_CurrentSelectedObject.UnSelect();

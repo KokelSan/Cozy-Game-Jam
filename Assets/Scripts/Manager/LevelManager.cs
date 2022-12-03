@@ -1,18 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Serializable]
+    public struct Events
+    {
+        public UnityEvent onStart;
+        public UnityEvent onWin;
+    }
+    
+    public Events events;
+    
+    public ISolvable[] Solvables;
+    public int SolvableUnsolvedCount;
+    public static LevelManager m_Instance;
+    public static LevelManager Instance
+    {
+        get
+        {
+            return m_Instance;
+        }
+    }
+    
     void Start()
     {
+        m_Instance = this;
+        Solvables = FindObjectsOfType<MonoBehaviour>().OfType<ISolvable>().ToArray();
         
+        events.onStart?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangePuzzleStatus(ISolvable solvable)
     {
-        
+        if (solvable.IsSolved())
+        {
+            SolvableUnsolvedCount++;
+        }
+        else
+        {
+            SolvableUnsolvedCount--;
+        }
+
+        if (SolvableUnsolvedCount == 0)
+        {
+            events.onWin?.Invoke();
+        }
     }
 }
