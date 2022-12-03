@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Interactive : MonoBehaviour
 {
+    public virtual void Click()
+    {
+        
+    }
+    
     public virtual void Select()
     {
         

@@ -24,7 +24,7 @@ public class PuzzleButton : Interactive
         m_Collider = GetComponent<Collider>();
     }
 
-    public override void Select()
+    public override void Click()
     {
         foreach (ToggleProblem m_TogglePuzzle in m_TogglePuzzles)
         {

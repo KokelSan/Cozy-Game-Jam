@@ -29,6 +29,7 @@ public class InputManager : MonoBehaviour
                 if (log)
                     Debug.Log("Selecting a new puzzle object");
                 m_ObjectManager.SelectObject(interactiveSelected);
+                interactiveSelected.Click();
             }
         }
         

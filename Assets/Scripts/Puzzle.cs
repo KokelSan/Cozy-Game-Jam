@@ -49,6 +49,7 @@ public class Puzzle : Interactive
         
         m_Collider.size = ColliderSizeWhenSelected;
         StartCoroutine(MoveToPosition(m_Camera.transform.position + m_Camera.transform.forward * DepthOffsetWhenSelected, Quaternion.identity, SelectionTranslationDuration));
+        LevelManager.Instance.CurrentPuzzle = this;
     }
 
     public override void UnSelect()
@@ -60,6 +61,7 @@ public class Puzzle : Interactive
         
         m_Collider.size = m_InitialColliderSize;
         StartCoroutine(MoveToPosition(m_InitialPosition, m_InitialRotation, UnSelectionTranslationDuration));
+        LevelManager.Instance.CurrentPuzzle = null;
     }
 
     public override void Drag(bool isHeld)

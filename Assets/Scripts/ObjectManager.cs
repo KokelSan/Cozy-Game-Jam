@@ -13,18 +13,25 @@ public class ObjectManager : MonoBehaviour
     private List<Interactive> m_PreviousHighLight = new List<Interactive>();
     private List<Interactive> m_CurrentHighlightedObjects = new List<Interactive>();
 
-    public bool TryGetCurrentSelectedObject(out Interactive[] puzzleObject)
+    public bool TryGetCurrentSelectedObject(out Interactive[] obj)
     {
-        puzzleObject = m_CurrentSelectedObjects.ToArray();
+        obj = m_CurrentSelectedObjects.ToArray();
         return m_CurrentSelectedObjects != null;
     }
 
-    public void SelectObject(Interactive puzzleObject)
+    public void SelectObject(Interactive obj)
     {
-        m_CurrentSelectedObjects.Add(puzzleObject);
+        m_CurrentSelectedObjects.Add(obj);
         
-        if (!m_PreviousSelection.Contains(puzzleObject))
-            puzzleObject.Select();
+        if (!m_PreviousSelection.Contains(obj))
+            obj.Select();
+    }
+    
+    public void UnSelectObject(Interactive obj)
+    {
+        m_PreviousSelection.Remove(obj);
+        m_CurrentSelectedObjects.Remove(obj);
+        obj.UnSelect();
     }
 
     public void ProcessUnselectObject()
@@ -40,9 +47,9 @@ public class ObjectManager : MonoBehaviour
         m_CurrentSelectedObjects.Clear();
     }
 
-    public void DrapObject(Interactive puzzleObject)
+    public void DrapObject(Interactive obj)
     {
-        m_ObjectHolded = puzzleObject;
+        m_ObjectHolded = obj;
         m_ObjectHolded.Drag(true);
     }
     
