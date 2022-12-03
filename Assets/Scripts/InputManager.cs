@@ -35,7 +35,7 @@ public class InputManager : MonoBehaviour
                 }
                 else
                 {
-                    if (hitInfo.collider.TryGetComponent(out PuzzleObject puzzleObject))
+                    if (hitInfo.collider.TryGetComponent(out Puzzle puzzleObject))
                     {
                         Debug.Log("Selecting a new puzzle object");
                         m_ObjectManager.SelectObject(puzzleObject);
@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour
     public void OnLook(InputValue input)
     {
         Vector2 mousePosition = Mouse.current.position.ReadValue();
-        if (CheckIfMousePointPuzzleObject(mousePosition, out PuzzleObject pointedObject))
+        if (CheckIfMousePointPuzzleObject(mousePosition, out Puzzle pointedObject))
         {
             if (pointedObject != m_ObjectManager.CurrentSelectedObject)
             {
@@ -83,25 +83,25 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private bool CheckIfMousePointPuzzleObject(Vector2 mousePosition, out PuzzleObject pointedObject)
+    private bool CheckIfMousePointPuzzleObject(Vector2 mousePosition, out Puzzle pointed)
     {
         Ray ray = m_Camera.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y));
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (hitInfo.collider.TryGetComponent(out PuzzleObject puzzleObject))
+            if (hitInfo.collider.TryGetComponent(out Puzzle puzzleObject))
             {
-                pointedObject = puzzleObject;
+                pointed = puzzleObject;
                 return true;
             }
         }
-        pointedObject = null;
+        pointed = null;
         return false;
     }
 
     private bool CheckIfMousePointCurrentObject(Vector2 mousePosition)
     {
-        if (CheckIfMousePointPuzzleObject(mousePosition, out PuzzleObject pointedObject))
+        if (CheckIfMousePointPuzzleObject(mousePosition, out Puzzle pointedObject))
         {
             if (pointedObject == m_ObjectManager.CurrentSelectedObject)
             {

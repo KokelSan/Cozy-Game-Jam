@@ -1,8 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PuzzleObject : MonoBehaviour, IInteractive
+public class Puzzle : MonoBehaviour, IInteractive
 {    
     public Vector3 ColliderSizeWhenSelected;
     public float DepthOffsetWhenSelected;
@@ -19,6 +20,8 @@ public class PuzzleObject : MonoBehaviour, IInteractive
     private Vector3 m_InitialPosition;
     private Quaternion m_InitialRotation;
     private bool m_IsHeld;
+
+    public List<IInteractive> Interactives;
 
     private void Start()
     {
@@ -39,12 +42,22 @@ public class PuzzleObject : MonoBehaviour, IInteractive
 
     public void Select()
     {
+        foreach (IInteractive interactive in Interactives)
+        {
+            interactive.SetActive(true);
+        }
+        
         m_Collider.size = ColliderSizeWhenSelected;
         StartCoroutine(MoveToPosition(m_Camera.transform.position + m_Camera.transform.forward * DepthOffsetWhenSelected, Quaternion.identity, SelectionTranslationDuration));
     }
 
     public void UnSelect()
     {
+        foreach (IInteractive interactive in Interactives)
+        {
+            interactive.SetActive(false);
+        }
+        
         m_Collider.size = m_InitialColliderSize;
         StartCoroutine(MoveToPosition(m_InitialPosition, m_InitialRotation, UnSelectionTranslationDuration));
     }
@@ -54,7 +67,17 @@ public class PuzzleObject : MonoBehaviour, IInteractive
         m_IsHeld = isHeld;
 
     }
-    
+
+    public bool IsActive()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SetActive(bool flag)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private IEnumerator MoveToPosition(Vector3 targetPosition, Quaternion targetRotation, float translationTime)
     {
         float step = 0;

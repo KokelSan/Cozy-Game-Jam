@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Collider))]
 public class PuzzleButton : MonoBehaviour, IInteractive
 {
     [Serializable]
@@ -14,11 +15,18 @@ public class PuzzleButton : MonoBehaviour, IInteractive
     public Events events;
 
     [SerializeField]
-    private readonly List<TogglePuzzle> m_TogglePuzzles = new List<TogglePuzzle>(); 
+    private List<ToggleProblem> m_TogglePuzzles = new List<ToggleProblem>();
+
+    private Collider m_Collider;
+
+    private void Awake()
+    {
+        m_Collider = GetComponent<Collider>();
+    }
 
     public void Select()
     {
-        foreach (TogglePuzzle m_TogglePuzzle in m_TogglePuzzles)
+        foreach (ToggleProblem m_TogglePuzzle in m_TogglePuzzles)
         {
             m_TogglePuzzle.Toggle();
         }
@@ -32,5 +40,15 @@ public class PuzzleButton : MonoBehaviour, IInteractive
 
     public void Drag(bool isHeld)
     {
+    }
+
+    public bool IsActive()
+    {
+        return m_Collider.enabled;
+    }
+
+    public void SetActive(bool flag)
+    {
+        m_Collider.enabled = flag;
     }
 }

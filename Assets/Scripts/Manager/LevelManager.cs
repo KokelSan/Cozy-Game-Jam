@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     
     public Events events;
 
-    public MultiplePuzzle puzzles;
+    public MultipleProblem problems;
     public static LevelManager m_Instance;
     public static LevelManager Instance
     {
@@ -27,8 +27,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         m_Instance = this;
-        puzzles.puzzles = FindObjectsOfType<Puzzle>().ToList();
-        puzzles.events.onSolved.AddListener(Win);
+        problems.problems = FindObjectsOfType<Problem>().ToList();
+        problems.events.onSolved.AddListener(Win);
         events.onStart?.Invoke();
     }
 

@@ -1,4 +1,4 @@
-public class TogglePuzzle : Puzzle
+public class ToggleProblem : Problem
 {
     private bool m_CurrentState;
     public bool CurrentState => m_CurrentState;

@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiplePuzzle : Puzzle
+public class MultipleProblem : Problem
 {
     [SerializeField]
-    public List<Puzzle> puzzles = new List<Puzzle>();
-    private int m_PuzzleUnsolvedCount;
+    public List<Problem> problems = new List<Problem>();
+    private int m_ProblemUnsolvedCount;
     
     private void Start()
     {
-        foreach (Puzzle puzzle in puzzles)
+        foreach (Problem puzzle in problems)
         {
             puzzle.events.onSolved.AddListener(SolvePartOfPuzzle);
             puzzle.events.onUnSolved.AddListener(UnSolvePartOfPuzzle);
@@ -18,9 +18,9 @@ public class MultiplePuzzle : Puzzle
     
     public void SolvePartOfPuzzle()
     {
-        m_PuzzleUnsolvedCount--;
+        m_ProblemUnsolvedCount--;
 
-        if (m_PuzzleUnsolvedCount == 0)
+        if (m_ProblemUnsolvedCount == 0)
         {
             events.onSolved?.Invoke();
         }
@@ -28,9 +28,9 @@ public class MultiplePuzzle : Puzzle
 
     public void UnSolvePartOfPuzzle()
     {
-        m_PuzzleUnsolvedCount++;
+        m_ProblemUnsolvedCount++;
     
-        if (m_PuzzleUnsolvedCount != 0)
+        if (m_ProblemUnsolvedCount != 0)
         {
             events.onUnSolved?.Invoke();
         }

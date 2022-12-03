@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Puzzle : MonoBehaviour
+public class Problem : MonoBehaviour
 {
     [Serializable]
     public struct Events
@@ -20,8 +20,6 @@ public class Puzzle : MonoBehaviour
     void SetActive(bool state)
     {
         if (state)
-        
-        
-        m_IsActive = state;
+            m_IsActive = state;
     }
 }
