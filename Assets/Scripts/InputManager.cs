@@ -16,8 +16,7 @@ public class InputManager : MonoBehaviour
     public void OnClick(InputValue input)
     {
         Ray ray = m_Camera.ScreenPointToRay(new Vector3(Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue()));
-
-
+        
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
             if (hitInfo.collider.TryGetComponent(out IInteractive interactiveSelected))

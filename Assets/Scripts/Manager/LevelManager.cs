@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,8 +13,8 @@ public class LevelManager : MonoBehaviour
     
     public Events events;
     
-    public ISolvable[] Solvables;
-    public int SolvableUnsolvedCount;
+    public Puzzle[] Puzzles;
+    public int PuzzleUnsolvedCount;
     public static LevelManager m_Instance;
     public static LevelManager Instance
     {
@@ -28,23 +27,22 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         m_Instance = this;
-        Solvables = FindObjectsOfType<MonoBehaviour>().OfType<ISolvable>().ToArray();
-        
+        Puzzles = FindObjectsOfType<Puzzle>();
         events.onStart?.Invoke();
     }
 
-    public void ChangePuzzleStatus(ISolvable solvable)
+    public void ChangePuzzleStatus(Puzzle puzzle)
     {
-        if (solvable.IsSolved())
+        if (puzzle.IsSolved())
         {
-            SolvableUnsolvedCount++;
+            PuzzleUnsolvedCount++;
         }
         else
         {
-            SolvableUnsolvedCount--;
+            PuzzleUnsolvedCount--;
         }
 
-        if (SolvableUnsolvedCount == 0)
+        if (PuzzleUnsolvedCount == 0)
         {
             events.onWin?.Invoke();
         }
