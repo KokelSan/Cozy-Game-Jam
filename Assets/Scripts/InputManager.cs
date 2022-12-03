@@ -7,6 +7,8 @@ public class InputManager : MonoBehaviour
     private Camera m_Camera;
     private bool m_IsHolding = false;
 
+    public bool log;
+
     private void Start()
     {
         m_Camera = Camera.main;
@@ -24,7 +26,8 @@ public class InputManager : MonoBehaviour
         {
             if (hitInfo.collider.TryGetComponent(out Interactive interactiveSelected))
             {
-                Debug.Log("Selecting a new puzzle object");
+                if (log)
+                    Debug.Log("Selecting a new puzzle object");
                 m_ObjectManager.SelectObject(interactiveSelected);
             }
         }
@@ -36,7 +39,8 @@ public class InputManager : MonoBehaviour
     {
         if (m_IsHolding)
         {
-            Debug.Log("Releasing current object");
+            if (log)
+                Debug.Log("Releasing current object");
             m_IsHolding = false;
             m_ObjectManager.DropObject();
         }
@@ -50,7 +54,8 @@ public class InputManager : MonoBehaviour
             {
                 if (hitInfo.collider.TryGetComponent(out Interactive pointed))
                 {
-                    Debug.Log("Holding current object");
+                    if (log)
+                        Debug.Log("Holding current object");
                     m_IsHolding = true;
                     m_ObjectManager.DrapObject(pointed);
                 }
@@ -69,7 +74,8 @@ public class InputManager : MonoBehaviour
        {
            if (hitInfo.collider.TryGetComponent(out Interactive interactiveSelected))
            {
-               Debug.Log("Is over objet");
+               if (log) 
+                   Debug.Log("Is over objet");
                m_ObjectManager.HighlightObject(interactiveSelected);
            }
        }

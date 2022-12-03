@@ -33,7 +33,6 @@ public class ObjectManager : MonoBehaviour
 
         foreach (Interactive obj in deselectionList)
         {
-            Debug.Log("UnSelecting current puzzle object");
             obj.UnSelect();
         }
 
@@ -70,7 +69,6 @@ public class ObjectManager : MonoBehaviour
 
         foreach (Interactive obj in deselectionList)
         {
-            Debug.Log("Is not over object");
             obj.Highlight(false);
         }
 
