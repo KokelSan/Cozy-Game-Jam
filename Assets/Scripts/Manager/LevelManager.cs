@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,9 +13,8 @@ public class LevelManager : MonoBehaviour
     }
     
     public Events events;
-    
-    public Puzzle[] Puzzles;
-    public int PuzzleUnsolvedCount;
+
+    public MultiplePuzzle puzzles;
     public static LevelManager m_Instance;
     public static LevelManager Instance
     {
@@ -27,29 +27,14 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         m_Instance = this;
-        Puzzles = FindObjectsOfType<Puzzle>();
-
-        foreach (Puzzle Puzzle in Puzzles)
-        {
-            Puzzle.events.onSolved.AddListener(SolvePuzzle);
-            Puzzle.events.onUnSolved.AddListener(UnSolvePuzzle);
-        }
-        
+        puzzles.puzzles = FindObjectsOfType<Puzzle>().ToList();
+        puzzles.events.onSolved.AddListener(Win);
         events.onStart?.Invoke();
     }
 
-    public void SolvePuzzle()
+    void Win()
     {
-        PuzzleUnsolvedCount--;
-
-        if (PuzzleUnsolvedCount == 0)
-        {
-            events.onWin?.Invoke();
-        }
+        events.onWin?.Invoke();
     }
-
-    public void UnSolvePuzzle()
-    {
-        PuzzleUnsolvedCount++;
-    }
+    
 }
