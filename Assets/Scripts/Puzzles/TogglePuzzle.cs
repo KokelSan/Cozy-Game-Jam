@@ -1,4 +1,4 @@
-public class TogglePuzzleTriggered : Puzzle
+public class TogglePuzzle : Puzzle
 {
     private bool m_CurrentState;
     public bool CurrentState => m_CurrentState;
