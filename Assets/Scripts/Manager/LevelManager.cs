@@ -28,23 +28,28 @@ public class LevelManager : MonoBehaviour
     {
         m_Instance = this;
         Puzzles = FindObjectsOfType<Puzzle>();
+
+        foreach (Puzzle Puzzle in Puzzles)
+        {
+            Puzzle.events.onSolved.AddListener(SolvePuzzle);
+            Puzzle.events.onUnSolved.AddListener(UnSolvePuzzle);
+        }
+        
         events.onStart?.Invoke();
     }
 
-    public void ChangePuzzleStatus(Puzzle puzzle)
+    public void SolvePuzzle()
     {
-        if (puzzle.IsSolved())
-        {
-            PuzzleUnsolvedCount++;
-        }
-        else
-        {
-            PuzzleUnsolvedCount--;
-        }
+        PuzzleUnsolvedCount--;
 
         if (PuzzleUnsolvedCount == 0)
         {
             events.onWin?.Invoke();
         }
+    }
+
+    public void UnSolvePuzzle()
+    {
+        PuzzleUnsolvedCount++;
     }
 }

@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
-public class Puzzle : MonoBehaviour, ISolvable
+public class Puzzle : MonoBehaviour
 {
-    public bool IsSolved()
+    [Serializable]
+    public struct Events
     {
-        return false;
+        public UnityEvent onSolved;
+        public UnityEvent onUnSolved;
     }
+    
+    public Events events;
 }
