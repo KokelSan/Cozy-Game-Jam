@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ObjectManager : MonoBehaviour
-{
+{    
+    public PuzzleObject CurrentSelectedObject => m_CurrentSelectedObject;
     private PuzzleObject m_CurrentSelectedObject = null;
 
     public bool TryGetCurrentSelectedObject(out PuzzleObject puzzleObject)
@@ -25,5 +26,10 @@ public class ObjectManager : MonoBehaviour
             m_CurrentSelectedObject.UnSelect();
             m_CurrentSelectedObject = null;
         }
+    }
+
+    public void HoldCurrentObject(bool isHolding)
+    {
+        m_CurrentSelectedObject.Drag(isHolding);
     }
 }

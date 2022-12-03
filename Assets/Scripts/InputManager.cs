@@ -5,6 +5,7 @@ public class InputManager : MonoBehaviour
 {
     private ObjectManager m_ObjectManager;
     private Camera m_Camera;
+    private bool m_IsHolding = false;
 
     private void Start()
     {
@@ -49,7 +50,62 @@ public class InputManager : MonoBehaviour
 
     public void OnHold(InputValue input)
     {
-        Debug.Log("Holding");
-        // TODO
+        if (m_IsHolding)
+        {
+            Debug.Log("Releasing current object");
+            m_ObjectManager.HoldCurrentObject(false);
+            m_IsHolding = false;
+        }
+        else
+        {
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            if (CheckIfMousePointCurrentObject(mousePosition) && Mouse.current.leftButton.isPressed)
+            {
+                Debug.Log("Holding current object");
+                m_IsHolding = true;                
+                m_ObjectManager.HoldCurrentObject(true);
+            }
+        }               
+    }
+
+    public void OnLook(InputValue input)
+    {
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        if (CheckIfMousePointPuzzleObject(mousePosition, out PuzzleObject pointedObject))
+        {
+            if (pointedObject != m_ObjectManager.CurrentSelectedObject)
+            {
+                Debug.Log("Mouse over a puzzle object");
+                // Display glow/outline
+            }
+        }
+    }
+
+    private bool CheckIfMousePointPuzzleObject(Vector2 mousePosition, out PuzzleObject pointedObject)
+    {
+        Ray ray = m_Camera.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y));
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            if (hitInfo.collider.TryGetComponent(out PuzzleObject puzzleObject))
+            {
+                pointedObject = puzzleObject;
+                return true;
+            }
+        }
+        pointedObject = null;
+        return false;
+    }
+
+    private bool CheckIfMousePointCurrentObject(Vector2 mousePosition)
+    {
+        if (CheckIfMousePointPuzzleObject(mousePosition, out PuzzleObject pointedObject))
+        {
+            if (pointedObject == m_ObjectManager.CurrentSelectedObject)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -240,6 +240,8 @@ MonoBehaviour:
   DepthOffsetWhenSelected: 5
   SelectionTranslationDuration: 0.1
   UnSelectionTranslationDuration: 0.1
+  RotateOnDrag: 1
+  RotationSpeed: 10
 --- !u!1001 &379543812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,6 +815,8 @@ MonoBehaviour:
   DepthOffsetWhenSelected: 5
   SelectionTranslationDuration: 0.1
   UnSelectionTranslationDuration: 0.1
+  RotateOnDrag: 0
+  RotationSpeed: 0
 --- !u!65 &1485096846
 BoxCollider:
   m_ObjectHideFlags: 0

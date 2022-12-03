@@ -38,8 +38,8 @@
                     "id": "4c043cad-91a4-41ab-aff4-0818e20e1ed8",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -168,7 +168,18 @@
                     "name": "",
                     "id": "12e18c5b-c3ef-4dd3-9e12-6ac6d4b3db14",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b098fdf1-eb4d-49ba-a46e-0b95a41850f7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Hold",
