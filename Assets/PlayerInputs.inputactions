@@ -25,7 +25,7 @@
                 },
                 {
                     "name": "Click",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "982eed9a-69c7-4083-9d35-ffbbf808ba16",
                     "expectedControlType": "Button",
                     "processors": "",

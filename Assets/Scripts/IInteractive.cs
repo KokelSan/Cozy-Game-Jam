@@ -16,6 +16,11 @@ public class Interactive : MonoBehaviour
     {
         
     }
+    
+    public virtual void Highlight(bool flag)
+    {
+        
+    }
 
     public virtual bool IsActive()
     {
