@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
-public class PuzzleButton : MonoBehaviour, IInteractive
+public class PuzzleButton : Interactive
 {
     [Serializable]
     public struct Events
@@ -24,7 +24,7 @@ public class PuzzleButton : MonoBehaviour, IInteractive
         m_Collider = GetComponent<Collider>();
     }
 
-    public void Select()
+    public override void Select()
     {
         foreach (ToggleProblem m_TogglePuzzle in m_TogglePuzzles)
         {
@@ -34,20 +34,20 @@ public class PuzzleButton : MonoBehaviour, IInteractive
         events.onTrigger?.Invoke();
     }
 
-    public void UnSelect()
+    public override void UnSelect()
     {
     }
 
-    public void Drag(bool isHeld)
+    public override void Drag(bool isHeld)
     {
     }
 
-    public bool IsActive()
+    public override bool IsActive()
     {
         return m_Collider.enabled;
     }
 
-    public void SetActive(bool flag)
+    public override void SetActive(bool flag)
     {
         m_Collider.enabled = flag;
     }

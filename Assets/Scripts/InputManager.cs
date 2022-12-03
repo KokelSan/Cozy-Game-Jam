@@ -19,9 +19,9 @@ public class InputManager : MonoBehaviour
         
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (hitInfo.collider.TryGetComponent(out IInteractive interactiveSelected))
+            if (hitInfo.collider.TryGetComponent(out Interactive interactiveSelected))
             {
-                if (m_ObjectManager.TryGetCurrentSelectedObject(out IInteractive SelectedObject))
+                if (m_ObjectManager.TryGetCurrentSelectedObject(out Interactive SelectedObject))
                 {
                     if (interactiveSelected == SelectedObject)
                     {

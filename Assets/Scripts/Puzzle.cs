@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Puzzle : MonoBehaviour, IInteractive
+public class Puzzle : Interactive
 {    
     public Vector3 ColliderSizeWhenSelected;
     public float DepthOffsetWhenSelected;
@@ -21,7 +21,7 @@ public class Puzzle : MonoBehaviour, IInteractive
     private Quaternion m_InitialRotation;
     private bool m_IsHeld;
 
-    public List<IInteractive> Interactives;
+    public List<Interactive> Interactives = new List<Interactive>();
 
     private void Start()
     {
@@ -40,9 +40,9 @@ public class Puzzle : MonoBehaviour, IInteractive
         }
     }
 
-    public void Select()
+    public override void Select()
     {
-        foreach (IInteractive interactive in Interactives)
+        foreach (Interactive interactive in Interactives)
         {
             interactive.SetActive(true);
         }
@@ -51,9 +51,9 @@ public class Puzzle : MonoBehaviour, IInteractive
         StartCoroutine(MoveToPosition(m_Camera.transform.position + m_Camera.transform.forward * DepthOffsetWhenSelected, Quaternion.identity, SelectionTranslationDuration));
     }
 
-    public void UnSelect()
+    public override void UnSelect()
     {
-        foreach (IInteractive interactive in Interactives)
+        foreach (Interactive interactive in Interactives)
         {
             interactive.SetActive(false);
         }
@@ -62,18 +62,18 @@ public class Puzzle : MonoBehaviour, IInteractive
         StartCoroutine(MoveToPosition(m_InitialPosition, m_InitialRotation, UnSelectionTranslationDuration));
     }
 
-    public void Drag(bool isHeld)
+    public override void Drag(bool isHeld)
     {
         m_IsHeld = isHeld;
 
     }
 
-    public bool IsActive()
+    public override bool IsActive()
     {
         throw new System.NotImplementedException();
     }
 
-    public void SetActive(bool flag)
+    public override void SetActive(bool flag)
     {
         throw new System.NotImplementedException();
     }

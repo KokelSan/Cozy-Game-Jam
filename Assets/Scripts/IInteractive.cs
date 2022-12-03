@@ -1,9 +1,29 @@
-public interface IInteractive
-{
-    public void Select();
-    public void UnSelect();
-    public void Drag(bool isHeld);
+using UnityEngine;
 
-    public bool IsActive();
-    public void SetActive(bool flag);
+public class Interactive : MonoBehaviour
+{
+    public virtual void Select()
+    {
+        
+    }
+
+    public virtual void UnSelect()
+    {
+        
+    }
+
+    public virtual void Drag(bool isHeld)
+    {
+        
+    }
+
+    public virtual bool IsActive()
+    {
+        return false;
+    }
+
+    public virtual void SetActive(bool flag)
+    {
+        
+    }
 }
