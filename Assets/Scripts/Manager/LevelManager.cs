@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
         foreach (Problem problem in problems)
         {
             problem.onSolved.AddListener(OnProblemSolved);
-            problem.onSolved.AddListener(OnProblemUnsolved);
+            problem.onUnSolved.AddListener(OnProblemUnsolved);
         }
     }
 
