@@ -92,7 +92,7 @@ public class Puzzle : MonoBehaviour
 
         UnSelect();
 
-        return m_OverredElement == null;
+        return m_OverredElement != null;
     }
 
     public void StopOverring()

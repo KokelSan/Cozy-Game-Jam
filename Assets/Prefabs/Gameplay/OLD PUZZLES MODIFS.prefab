@@ -8745,7 +8745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3327091656607594035}
   m_Layer: 0
-  m_Name: NEW PUZZLES MODIFS
+  m_Name: OLD PUZZLES MODIFS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

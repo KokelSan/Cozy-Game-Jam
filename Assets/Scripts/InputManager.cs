@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
 
     private Puzzle m_SelectedPuzzle = null;
     private FocusableObject m_FocusedObject = null;
-    private Puzzle m_OveredPuzzle = null;
+    private Puzzle m_OverredPuzzle = null;
 
     public bool log;
 
@@ -107,6 +107,12 @@ public class InputManager : MonoBehaviour
             m_FocusedObject.UnFocus();
             m_FocusedObject = null;
         }
+
+        if (m_OverredPuzzle)
+        {
+            m_OverredPuzzle.StopOverring();
+            m_OverredPuzzle = null;
+        }
     }
 
     public bool CheckIfFocusable(GameObject objectToCheck)
@@ -142,16 +148,16 @@ public class InputManager : MonoBehaviour
                 {
                     if (puzzle.ManageOverring(ray))
                     {
-                        m_OveredPuzzle = puzzle;
+                        m_OverredPuzzle = puzzle;
                     }                    
                 }
             }
-            else if(m_OveredPuzzle != null)
+            else if(m_OverredPuzzle != null)
             {
                 StopOverring();
             }
         }
-        else if (m_OveredPuzzle != null)
+        else if (m_OverredPuzzle != null)
         {
             StopOverring();
         }
@@ -159,7 +165,7 @@ public class InputManager : MonoBehaviour
 
     private void StopOverring()
     {
-        m_OveredPuzzle.StopOverring();
-        m_OveredPuzzle = null;
+        m_OverredPuzzle.StopOverring();
+        m_OverredPuzzle = null;
     }
 }
