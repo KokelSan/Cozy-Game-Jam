@@ -54,6 +54,25 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayLoop(AudioClip clip)
+    {
+        for (int i = 0; i < m_EffectsSource.Count; i++)
+        {
+            if (!m_EffectsSource[i].isPlaying)
+            {
+                m_EffectsSource[i].clip = clip;
+                m_EffectsSource[i].Play();
+                m_EffectsSource[i].loop = true;
+                m_CurrentTrackIndex = (m_CurrentTrackIndex + 1) % m_EffectsSource.Count;
+                return;
+            }
+
+            m_CurrentTrackIndex = (m_CurrentTrackIndex + 1) % m_EffectsSource.Count;
+        }
+
+        Debug.LogWarning("All track used. Add more track to SoundManager");
+    }
+
     // Play a single clip through the sound effects source.
     public void Play(AudioClip clip)
     {
