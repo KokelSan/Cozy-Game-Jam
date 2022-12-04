@@ -58,13 +58,13 @@ Material:
     - _DisolveScale: 2
     - _DistorsionScale: 5
     - _DistortionAmount: 0.1
-    - _EmisiveScale: 1
+    - _EmisiveScale: 100
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 4, g: 1.066667, b: 0.6117647, a: 0}
-    - _DisolveSpeed: {r: 0, g: -0.5, b: 0, a: 0}
-    - _DistortionSpeed: {r: 0, g: -0.3, b: 0, a: 0}
+    - _Color: {r: 3.9999995, g: 2.6012044, b: 0.62827224, a: 0}
+    - _DisolveSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _DistortionSpeed: {r: 0, g: -1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3190896006991338799
 MonoBehaviour:
