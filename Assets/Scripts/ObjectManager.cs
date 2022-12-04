@@ -1,35 +1,85 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
+//using System.Collections.Generic;
+//using System.Linq;
+//using UnityEngine;
+//using UnityEngine.InputSystem;
 
-public class ObjectManager : MonoBehaviour
-{    
-    public Interactive CurrentSelectedObject => m_CurrentSelectedObject;
-    private Interactive m_CurrentSelectedObject = null;
+//public class ObjectManager : MonoBehaviour
+//{    
+//    private List<Interactive> m_PreviousSelection = new List<Interactive>();
+//    private List<Interactive> m_CurrentSelectedObjects = new List<Interactive>();
 
-    public bool TryGetCurrentSelectedObject(out Interactive puzzleObject)
-    {
-        puzzleObject = m_CurrentSelectedObject;
-        return m_CurrentSelectedObject != null;
-    }
+//    private Interactive m_ObjectHolded;
+    
+//    private List<Interactive> m_PreviousHighLight = new List<Interactive>();
+//    private List<Interactive> m_CurrentHighlightedObjects = new List<Interactive>();
 
-    public void SelectObject(Interactive puzzleObject)
-    {
-        m_CurrentSelectedObject = puzzleObject;
-        m_CurrentSelectedObject.Select();
-    }
+//    public bool TryGetCurrentSelectedObject(out Interactive[] obj)
+//    {
+//        obj = m_CurrentSelectedObjects.ToArray();
+//        return m_CurrentSelectedObjects != null;
+//    }
 
-    public void UnselectCurrentObject()
-    {
-        if (m_CurrentSelectedObject != null)
-        {
-            Debug.Log("UnSelecting current puzzle object");
-            m_CurrentSelectedObject.UnSelect();
-            m_CurrentSelectedObject = null;
-        }
-    }
+//    public void SelectObject(Interactive obj)
+//    {
+//        m_CurrentSelectedObjects.Add(obj);
+        
+//        if (!m_PreviousSelection.Contains(obj))
+//            obj.Select();
+//    }
+    
+//    public void UnSelectObject(Interactive obj)
+//    {
+//        m_PreviousSelection.Remove(obj);
+//        m_CurrentSelectedObjects.Remove(obj);
+//        obj.UnSelect();
+//    }
 
-    public void HoldCurrentObject(bool isHolding)
-    {
-        m_CurrentSelectedObject.Drag(isHolding);
-    }
-}
+//    public void ProcessUnselectObject()
+//    {
+//        List<Interactive> deselectionList = m_PreviousSelection.Except(m_CurrentSelectedObjects).ToList();
+
+//        foreach (Interactive obj in deselectionList)
+//        {
+//            obj.UnSelect();
+//        }
+
+//        m_PreviousSelection = new List<Interactive>(m_CurrentSelectedObjects);
+//        m_CurrentSelectedObjects.Clear();
+//    }
+
+//    public void DrapObject(Interactive obj)
+//    {
+//        m_ObjectHolded = obj;
+//        m_ObjectHolded.Drag(true);
+//    }
+    
+//    public void DropObject()
+//    {
+//        if (m_ObjectHolded)
+//        {
+//            m_ObjectHolded.Drag(false);
+//            m_ObjectHolded = null;
+//        }
+//    }
+    
+//    public void HighlightObject(Interactive obj)
+//    {
+//        m_CurrentHighlightedObjects.Add(obj);
+        
+//        if (!m_PreviousHighLight.Contains(obj))
+//            obj.Highlight(true);
+//    }
+    
+//    public void ProcessMouseNotOver()
+//    {
+//        List<Interactive> deselectionList = m_PreviousHighLight.Except(m_CurrentHighlightedObjects).ToList();
+
+//        foreach (Interactive obj in deselectionList)
+//        {
+//            obj.Highlight(false);
+//        }
+
+//        m_PreviousHighLight = new List<Interactive>(m_CurrentHighlightedObjects);
+//        m_CurrentHighlightedObjects.Clear();
+//    }
+//}

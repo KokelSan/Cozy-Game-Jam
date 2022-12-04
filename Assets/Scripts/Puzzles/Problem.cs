@@ -4,22 +4,24 @@ using UnityEngine.Events;
 
 public class Problem : MonoBehaviour
 {
-    [Serializable]
-    public struct Events
-    {
-        public UnityEvent onSolved;
-        public UnityEvent onUnSolved;
-        public UnityEvent onActivated;
-        public UnityEvent onDisable;
-    }
+    public UnityEvent onSolved;
+    public UnityEvent onUnSolved;
+    private bool isSolve = false;
     
-    public Events events;
-    private bool m_IsActive;
-    public bool IsActive => m_IsActive;
-    
-    void SetActive(bool state)
+    public void SetSolveStatus(bool flag)
     {
-        if (state)
-            m_IsActive = state;
+        if (flag == isSolve)
+            return;
+        
+        if (flag)
+        {
+            onSolved?.Invoke();
+            isSolve = true;
+        }
+        else
+        {
+            onUnSolved?.Invoke();
+            isSolve = false;
+        }
     }
 }

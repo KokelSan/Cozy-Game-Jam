@@ -24,18 +24,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Click",
-                    "type": "Value",
-                    "id": "982eed9a-69c7-4083-9d35-ffbbf808ba16",
+                    "name": "LeftClick",
+                    "type": "Button",
+                    "id": "6c509c18-0ec2-4ff8-ac32-cdbdfd2f4619",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Hold",
+                    "name": "LeftHold",
                     "type": "Button",
-                    "id": "4c043cad-91a4-41ab-aff4-0818e20e1ed8",
+                    "id": "892ab681-c1aa-4356-9eac-69b1f20e3e5f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -155,34 +155,34 @@
                 },
                 {
                     "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
+                    "id": "6a028d99-28a4-4e1b-b6a4-2d697908471b",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Mouse",
-                    "action": "Click",
+                    "action": "LeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "12e18c5b-c3ef-4dd3-9e12-6ac6d4b3db14",
+                    "id": "930177d7-e474-42cd-b27f-4d59f0a86a20",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
+                    "interactions": "Hold(duration=0.2)",
                     "processors": "",
                     "groups": "Mouse",
-                    "action": "Hold",
+                    "action": "LeftHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b098fdf1-eb4d-49ba-a46e-0b95a41850f7",
+                    "id": "f9793ffc-cca6-4c0a-8370-c6323a6e1d9f",
                     "path": "<Mouse>/leftButton",
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Mouse",
-                    "action": "Hold",
+                    "action": "LeftHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

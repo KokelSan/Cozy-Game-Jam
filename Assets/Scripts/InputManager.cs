@@ -3,109 +3,147 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private ObjectManager m_ObjectManager;
+    //private ObjectManager m_ObjectManager;
+
     private Camera m_Camera;
+    private Mouse m_Mouse;
+
     private bool m_IsHolding = false;
+
+    private Puzzle m_SelectedPuzzle = null;
+    private FocusableObject m_FocusedObject = null;
+    private Puzzle m_OveredPuzzle = null;
+
+    public bool log;
 
     private void Start()
     {
         m_Camera = Camera.main;
-        m_ObjectManager = FindObjectOfType<ObjectManager>();
+        m_Mouse = Mouse.current;
+        //m_ObjectManager = FindObjectOfType<ObjectManager>();
     }
 
-    public void OnClick(InputValue input)
+    public void OnLeftClick(InputValue input)
     {
-        Ray ray = m_Camera.ScreenPointToRay(new Vector3(Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue()));
-        
+        if (log) Debug.Log("Click");
+
+        Vector2 mousePosition = m_Mouse.position.ReadValue();
+        Ray ray = m_Camera.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y));
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (hitInfo.collider.TryGetComponent(out Interactive interactiveSelected))
+            if (log) Debug.Log("Collision");
+
+            bool isImportantObject = false;
+
+            if (hitInfo.collider.TryGetComponent(out FocusableObject focusableObject))
             {
-                if (m_ObjectManager.TryGetCurrentSelectedObject(out Interactive SelectedObject))
-                {
-                    if (interactiveSelected == SelectedObject)
-                    {
-                        Debug.Log("Clicking on current puzzle object");
-                        // ObjectManager.Whatever...
-                    }
-                    else
-                    {
-                        m_ObjectManager.UnselectCurrentObject();
-                    }
+                if (focusableObject != m_FocusedObject)
+                {               
+                    focusableObject.Focus();
+                    m_FocusedObject = focusableObject;                    
                 }
-                else
+                isImportantObject = true;
+            }
+
+            if (hitInfo.collider.TryGetComponent(out Puzzle puzzle))
+            {
+                if (puzzle != m_SelectedPuzzle)
                 {
-                    if (hitInfo.collider.TryGetComponent(out Puzzle puzzleObject))
-                    {
-                        Debug.Log("Selecting a new puzzle object");
-                        m_ObjectManager.SelectObject(puzzleObject);
-                    }
+                    if (log) Debug.Log("Selecting object");
+                    puzzle.Select();
+                    m_SelectedPuzzle = puzzle;
+                    isImportantObject = true;
                 }
+            }            
+
+            if (m_SelectedPuzzle && hitInfo.collider.TryGetComponent(out InteractivePuzzleElement puzzleElement))
+            {
+                if (m_SelectedPuzzle.CheckIfElementBelongsToPuzzle(puzzleElement))
+                {
+                    if (log) Debug.Log("Clickin on interactive element");
+                    puzzleElement.Click();
+                    isImportantObject = true;
+                }
+            }
+
+            if (!isImportantObject)
+            {
+                if (log) Debug.Log("Not important object");
+                UnSelectObjects();
             }
         }
         else
         {
-            m_ObjectManager.UnselectCurrentObject();
+            if (log) Debug.Log("No collision");
+            UnSelectObjects();
         }
-        
     }
 
-    public void OnHold(InputValue input)
+    public void UnSelectObjects()
+    {
+        if (m_SelectedPuzzle)
+        {
+            m_SelectedPuzzle.UnSelect();
+            m_SelectedPuzzle = null;
+        }
+
+        if (m_FocusedObject)
+        {
+            m_FocusedObject.UnFocus();
+            m_FocusedObject = null;
+        }
+    }
+
+    public void OnLeftHold(InputValue input)
     {
         if (m_IsHolding)
         {
-            Debug.Log("Releasing current object");
-            m_ObjectManager.HoldCurrentObject(false);
+            if (log) Debug.Log("Dropping");
+            if (m_FocusedObject)
+                m_FocusedObject.Drag(false);
             m_IsHolding = false;
         }
-        else
-        {
+        else if(input.isPressed)
+        {           
             Vector2 mousePosition = Mouse.current.position.ReadValue();
-            if (CheckIfMousePointCurrentObject(mousePosition) && Mouse.current.leftButton.isPressed)
+            if (CheckIfMousePointCurrentFocusedObject(mousePosition))
             {
-                Debug.Log("Holding current object");
-                m_IsHolding = true;                
-                m_ObjectManager.HoldCurrentObject(true);
+                if (log) Debug.Log("Holding");
+                m_IsHolding = true;
+                m_FocusedObject.Drag(true);
             }
-        }               
+        }
     }
 
     public void OnLook(InputValue input)
     {
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
-        if (CheckIfMousePointPuzzleObject(mousePosition, out Puzzle pointedObject))
-        {
-            if (pointedObject != m_ObjectManager.CurrentSelectedObject)
-            {
-                Debug.Log("Mouse over a puzzle object");
-                // Display glow/outline
-            }
-        }
-    }
-
-    private bool CheckIfMousePointPuzzleObject(Vector2 mousePosition, out Puzzle pointed)
-    {
+        Vector2 mousePosition = m_Mouse.position.ReadValue();
         Ray ray = m_Camera.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y));
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (hitInfo.collider.TryGetComponent(out Puzzle puzzleObject))
+            if (hitInfo.collider.TryGetComponent(out Puzzle puzzle))
             {
-                pointed = puzzleObject;
-                return true;
+                if (log) Debug.Log("Overing object");
+                m_OveredPuzzle = puzzle;
+                m_OveredPuzzle.Overing(true);
             }
         }
-        pointed = null;
-        return false;
+        else if (m_OveredPuzzle != null)
+        {
+            if (log) Debug.Log("Overing finished");
+            m_OveredPuzzle.Overing(false);
+        }
     }
 
-    private bool CheckIfMousePointCurrentObject(Vector2 mousePosition)
+    private bool CheckIfMousePointCurrentFocusedObject(Vector2 mousePosition)
     {
-        if (CheckIfMousePointPuzzleObject(mousePosition, out Puzzle pointedObject))
+        Ray ray = m_Camera.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y));
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (pointedObject == m_ObjectManager.CurrentSelectedObject)
+            if (hitInfo.collider.TryGetComponent(out FocusableObject focusableObject))
             {
-                return true;
+                return focusableObject == m_FocusedObject;
             }
         }
         return false;
