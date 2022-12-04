@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27ae502a02ff6ee478c4b6ed3c3893c3
+guid: a2346541ee498754ab75596e38072c8e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mat_prop_garland
-    second: {fileID: 2100000, guid: ef35d53d329cc4f4a989775079132cbb, type: 2}
+    second: {fileID: 2100000, guid: 00784f23a0c384648a3a038fc2b4c78b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
