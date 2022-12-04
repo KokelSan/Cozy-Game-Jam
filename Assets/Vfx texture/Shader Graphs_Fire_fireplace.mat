@@ -58,7 +58,7 @@ Material:
     - _DisolveScale: 2
     - _DistorsionScale: 5
     - _DistortionAmount: 0.1
-    - _EmisiveScale: 0
+    - _EmisiveScale: 50
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
