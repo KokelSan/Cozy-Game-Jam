@@ -16,6 +16,8 @@ public class FocusableObject : MonoBehaviour
     private Vector3 m_InitialPosition;   
     private Quaternion m_InitialRotation;
 
+    public AnimationCurve m_FocusMovementAnimation;
+
     private bool m_IsHeld;
 
     private void Start()
@@ -63,12 +65,16 @@ public class FocusableObject : MonoBehaviour
 
     private IEnumerator MoveToPosition(Vector3 targetPosition, Quaternion targetRotation, float translationTime)
     {
+        Vector3 startPos = m_TransformToMove.position;
+        Quaternion startRot = m_TransformToMove.rotation;
         float step = 0;
         while (step < translationTime)
         {
             step += Time.fixedDeltaTime;
-            m_TransformToMove.position = Vector3.Lerp(m_InitialPosition, targetPosition, step / translationTime);
-            m_TransformToMove.rotation = Quaternion.Lerp(m_InitialRotation, targetRotation, step / translationTime);
+
+            float t = m_FocusMovementAnimation.Evaluate(step / translationTime);
+            m_TransformToMove.position = Vector3.LerpUnclamped(startPos, targetPosition, t);
+            m_TransformToMove.rotation = Quaternion.SlerpUnclamped(startRot, targetRotation, t);
             yield return new WaitForFixedUpdate();
         }
     }

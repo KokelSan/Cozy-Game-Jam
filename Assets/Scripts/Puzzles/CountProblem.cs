@@ -8,9 +8,6 @@ public class CountProblem : Problem
     {
         ClickCount++;
 
-        if (ClickCount == ClickNumberToSolveProblem)
-        {
-            SolveProblem();
-        }
+        SetSolveStatus(ClickCount == ClickNumberToSolveProblem);
     }
 }

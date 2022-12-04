@@ -29,9 +29,6 @@ public class ToggleProblem : Problem
     {
         TrueElementCount -= negativeCount;
         TrueElementCount += positiveCount;
-        if (TrueElementCount == ToggleElementCount)
-        {
-            SolveProblem();
-        }
+        SetSolveStatus(TrueElementCount == ToggleElementCount);
     }
 }

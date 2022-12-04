@@ -1,69 +1,58 @@
-//using System;
-//using System.Linq;
-//using UnityEngine;
-//using UnityEngine.Events;
+using System;
+using UnityEngine;
+using UnityEngine.Events;
 
-//public class LevelManager : MultipleProblem
-//{
-//    [Serializable]
-//    public struct LevelManagerEvents
-//    {
-//        public UnityEvent onStart;
-//        public UnityEvent onWin;
-//    }
+public class LevelManager : MonoBehaviour
+{
+    [Serializable]
+    public struct Events
+    {
+        public UnityEvent onStart;
+        public UnityEvent onWin;
+    }
+
+    public Events events;
+    Problem[] problems;
+    public static LevelManager m_Instance;
+    private int m_ProblemUnsolvedCount;
+
+    public static LevelManager Instance
+    {
+        get
+        {
+            return m_Instance;
+        }
+    }
     
-//    private LevelManagerEvents LMevents;
-//    private ObjectManager ObjectManager;
-//    Puzzle[] puzzles;
-//    Puzzle m_CurrentPuzzle;
-//    public static LevelManager m_Instance;
+    void Start()
+    {
+        m_Instance = this;
+        events.onStart?.Invoke();
+        problems = FindObjectsOfType<Problem>();
 
-//    public Puzzle CurrentPuzzle
-//    {
-//        get => m_CurrentPuzzle;
-//        set
-//        {
-//            if (m_CurrentPuzzle && value != null)
-//                ObjectManager.UnSelectObject(m_CurrentPuzzle);
-//            m_CurrentPuzzle = value;
+        m_ProblemUnsolvedCount = problems.Length;
+        foreach (Problem problem in problems)
+        {
+            problem.onSolved.AddListener(OnProblemSolved);
+            problem.onSolved.AddListener(OnProblemUnsolved);
+        }
+    }
 
-//            if (m_CurrentPuzzle != null)
-//            {
-//                foreach (Puzzle puzzle in puzzles)
-//                {
-//                    puzzle.SetActive(puzzle == m_CurrentPuzzle);
-//                }
-//            }
-//            else
-//            {
-//                foreach (Puzzle puzzle in puzzles)
-//                {
-//                    puzzle.SetActive(true);
-//                }
-//            }
-//        }
-//    }
+    void OnProblemSolved()
+    {
+        m_ProblemUnsolvedCount--;
+        
+        if (m_ProblemUnsolvedCount <= 0)
+            Win();
+    }
     
-//    public static LevelManager Instance
-//    {
-//        get
-//        {
-//            return m_Instance;
-//        }
-//    }
-    
-//    void Start()
-//    {
-//        m_Instance = this;
-//        problems = FindObjectsOfType<Problem>().ToList();
-//        ObjectManager = FindObjectOfType<ObjectManager>();
-//        puzzles = FindObjectsOfType<Puzzle>();
-//        events.onSolved.AddListener(Win);
-//        LMevents.onStart?.Invoke();
-//    }
+    void OnProblemUnsolved()
+    {
+        m_ProblemUnsolvedCount++;
+    }
 
-//    void Win()
-//    {
-//        LMevents.onWin?.Invoke();
-//    }    
-//}
+    void Win()
+    {
+        events.onWin?.Invoke();
+    }    
+}

@@ -1,12 +1,27 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class Problem : MonoBehaviour
 {
     public UnityEvent onSolved;
-
-    public virtual void SolveProblem() 
+    public UnityEvent onUnSolved;
+    private bool isSolve = false;
+    
+    public void SetSolveStatus(bool flag)
     {
-        onSolved?.Invoke();
+        if (flag == isSolve)
+            return;
+        
+        if (flag)
+        {
+            onSolved?.Invoke();
+            isSolve = true;
+        }
+        else
+        {
+            onUnSolved?.Invoke();
+            isSolve = false;
+        }
     }
 }
