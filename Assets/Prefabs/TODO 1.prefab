@@ -183,6 +183,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 4987862131011821347}
     m_Modifications:
     - target: {fileID: 830343441934575576, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
+      propertyPath: m_fontSize
+      value: 18.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 830343441934575576, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d33bad813c07cb24189fbcaab5596527, type: 2}
+    - target: {fileID: 830343441934575576, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
       propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -194,6 +202,10 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 830343441934575576, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 700566237501813387, guid: d33bad813c07cb24189fbcaab5596527, type: 2}
     - target: {fileID: 830343441934575576, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
@@ -314,10 +326,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6804961153218897045, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d33bad813c07cb24189fbcaab5596527, type: 2}
+    - target: {fileID: 6804961153218897045, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 700566237501813387, guid: d33bad813c07cb24189fbcaab5596527, type: 2}
     - target: {fileID: 9002435505893893200, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
       propertyPath: m_fontSize
-      value: 78.05
+      value: 84.2
       objectReference: {fileID: 0}
+    - target: {fileID: 9002435505893893200, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d33bad813c07cb24189fbcaab5596527, type: 2}
+    - target: {fileID: 9002435505893893200, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 700566237501813387, guid: d33bad813c07cb24189fbcaab5596527, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99832ebcdf07b2147b7ea9c9fcc27484, type: 3}
 --- !u!4 &4987862129821345470 stripped
