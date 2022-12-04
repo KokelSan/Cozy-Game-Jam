@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1770733370759150237}
   - component: {fileID: 1770733370759150239}
   - component: {fileID: 1770733370759150233}
+  - component: {fileID: 667788216}
   m_Layer: 0
   m_Name: Hifi Puzzle
   m_TagString: Untagged
@@ -71,7 +72,11 @@ MonoBehaviour:
     onOvering:
       m_PersistentCalls:
         m_Calls: []
-  InteractiveElements: []
+  InteractiveElements:
+  - {fileID: 1033528937}
+  - {fileID: 1494519768}
+  - {fileID: 288864099}
+  - {fileID: 1759110652}
   m_Colliders:
   - {fileID: 1770733370759150235}
 --- !u!114 &1770733370759150239
@@ -145,27 +150,82 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.006248474
       value: 0
-      inSlope: -1.0888181
-      outSlope: -1.0888181
+      inSlope: -0.8624556
+      outSlope: -0.8624556
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.23125
+      outWeight: 0.20000003
     - serializedVersion: 3
-      time: 0.98124695
-      value: 1.005127
-      inSlope: -1.0265924
-      outSlope: -1.0265924
+      time: 1
+      value: 1.0036697
+      inSlope: -0.6394243
+      outSlope: -0.6394243
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.1625
+      inWeight: 0.25625002
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_IsHeld: 0
+--- !u!114 &667788216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770733370759150208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a90404a31f8b949ada33e5e1f86d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSolved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: UnSelectObjects
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1770733370759150237}
+        m_TargetAssemblyTypeName: Puzzle, Assembly-CSharp
+        m_MethodName: SetPuzzleActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onUnSolved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1770733370759150237}
+        m_TargetAssemblyTypeName: Puzzle, Assembly-CSharp
+        m_MethodName: SetPuzzleActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  CorrectClip: {fileID: 8300000, guid: aa4125f93785d9d4782445774f4e5ab5, type: 3}
 --- !u!1 &1851137770302409814
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +328,8 @@ GameObject:
   - component: {fileID: 4158271644155998895}
   - component: {fileID: 2829501489359318455}
   - component: {fileID: 5243688015142642200}
-  - component: {fileID: 5243688015142642201}
-  - component: {fileID: 5243688015142642214}
+  - component: {fileID: 1494519769}
+  - component: {fileID: 1494519768}
   m_Layer: 0
   m_Name: hifi_button2
   m_TagString: Untagged
@@ -342,8 +402,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5243688015142642201
-SphereCollider:
+--- !u!65 &1494519769
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -351,11 +411,11 @@ SphereCollider:
   m_GameObject: {fileID: 1925996917385569138}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.048829544
-  m_Center: {x: 0.0013275152, y: -0.11578047, z: 0.27735904}
---- !u!114 &5243688015142642214
+  m_Size: {x: 0.09765904, y: 0.097659044, z: 0.03756803}
+  m_Center: {x: 0.0013272761, y: -0.11577999, z: 0.27735913}
+--- !u!114 &1494519768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -364,28 +424,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1925996917385569138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4604318b8c4be89929a8baa6e0db25, type: 3}
+  m_Script: {fileID: 11500000, guid: 99888ee84696ace4fa99623acd356b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: c0d8e7158fc719447a22dc5a55b3c109, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  RelatedToggleProblem: {fileID: 0}
+      m_Calls: []
+  RelatedToggleProblem: {fileID: 667788216}
   ElementToToggle:
-  - {fileID: 3130613916324897373}
-  - {fileID: 3130613917354495762}
+  - {fileID: 929718304}
+  - {fileID: 1281397101}
+  - {fileID: 836480520}
 --- !u!1 &2430011415180212615
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,8 +446,8 @@ GameObject:
   - component: {fileID: 3869629266303962228}
   - component: {fileID: 6078377186278181267}
   - component: {fileID: 4730014447320783508}
-  - component: {fileID: 6078377186278181264}
-  - component: {fileID: 6078377186278181265}
+  - component: {fileID: 288864100}
+  - component: {fileID: 288864099}
   m_Layer: 0
   m_Name: hifi_button3
   m_TagString: Untagged
@@ -471,8 +520,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6078377186278181264
-SphereCollider:
+--- !u!65 &288864100
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -480,11 +529,11 @@ SphereCollider:
   m_GameObject: {fileID: 2430011415180212615}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.048829548
-  m_Center: {x: 0.1256569, y: -0.11578047, z: 0.27735904}
---- !u!114 &6078377186278181265
+  m_Size: {x: 0.097659044, y: 0.097659044, z: 0.03756803}
+  m_Center: {x: 0.12565659, y: -0.11577999, z: 0.27735913}
+--- !u!114 &288864099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,29 +542,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2430011415180212615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4604318b8c4be89929a8baa6e0db25, type: 3}
+  m_Script: {fileID: 11500000, guid: 99888ee84696ace4fa99623acd356b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: c0d8e7158fc719447a22dc5a55b3c109, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  RelatedToggleProblem: {fileID: 0}
+      m_Calls: []
+  RelatedToggleProblem: {fileID: 667788216}
   ElementToToggle:
-  - {fileID: 3130613917354495762}
-  - {fileID: 3130613917168168458}
-  - {fileID: 3130613917492168794}
+  - {fileID: 929718304}
+  - {fileID: 1281397101}
 --- !u!1 &3130613915655358209
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,8 +563,8 @@ GameObject:
   - component: {fileID: 3130613915655358222}
   - component: {fileID: 3130613915655358218}
   - component: {fileID: 3130613915655358221}
-  - component: {fileID: 3130613915655358220}
-  - component: {fileID: 3130613915655358223}
+  - component: {fileID: 1759110653}
+  - component: {fileID: 1759110652}
   m_Layer: 0
   m_Name: hifi_button4
   m_TagString: Untagged
@@ -601,8 +637,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3130613915655358220
-SphereCollider:
+--- !u!65 &1759110653
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -610,11 +646,11 @@ SphereCollider:
   m_GameObject: {fileID: 3130613915655358209}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.048829548
-  m_Center: {x: 0.1256569, y: -0.11578047, z: 0.27735904}
---- !u!114 &3130613915655358223
+  m_Size: {x: 0.097659044, y: 0.097659044, z: 0.03756803}
+  m_Center: {x: 0.12565659, y: -0.11577999, z: 0.27735913}
+--- !u!114 &1759110652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -623,28 +659,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3130613915655358209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4604318b8c4be89929a8baa6e0db25, type: 3}
+  m_Script: {fileID: 11500000, guid: 99888ee84696ace4fa99623acd356b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: c0d8e7158fc719447a22dc5a55b3c109, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  RelatedToggleProblem: {fileID: 0}
+      m_Calls: []
+  RelatedToggleProblem: {fileID: 667788216}
   ElementToToggle:
-  - {fileID: 3130613916324897373}
-  - {fileID: 3130613917492168794}
+  - {fileID: 836480520}
 --- !u!1 &3130613916324897375
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,8 +677,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3130613916324897372}
-  - component: {fileID: 3130613916324897373}
   - component: {fileID: 3130613916324897370}
+  - component: {fileID: 2112916845}
   m_Layer: 0
   m_Name: Sound1
   m_TagString: Untagged
@@ -678,50 +701,6 @@ Transform:
   m_Father: {fileID: 2975447580075394157}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &3130613916324897373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3130613916324897375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfbd9d447b7f9a498363cc99fc4df2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToToggleType: 3
-  objectToToggle: {fileID: 0}
-  OnToggleOn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3130613917492168795}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnToggleOff:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3130613917492168795}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!82 &3130613916324897370
 AudioSource:
   m_ObjectHideFlags: 0
@@ -818,6 +797,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2112916845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130613916324897375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c91aec6c8a9406468bf64a7587890eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 3130613916324897370}
 --- !u!1 &3130613917168168460
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,8 +819,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3130613917168168461}
-  - component: {fileID: 3130613917168168458}
   - component: {fileID: 3130613917168168459}
+  - component: {fileID: 1281397101}
   m_Layer: 0
   m_Name: Sound3
   m_TagString: Untagged
@@ -851,50 +843,6 @@ Transform:
   m_Father: {fileID: 2975447580075394157}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &3130613917168168458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3130613917168168460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfbd9d447b7f9a498363cc99fc4df2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToToggleType: 3
-  objectToToggle: {fileID: 0}
-  OnToggleOn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3130613917492168795}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnToggleOff:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3130613917492168795}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!82 &3130613917168168459
 AudioSource:
   m_ObjectHideFlags: 0
@@ -907,7 +855,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 6953b44c16aeea24ea06ee553672cbfe, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6366cd52da9f6944d8d958d6869a221d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -991,6 +939,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1281397101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130613917168168460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c91aec6c8a9406468bf64a7587890eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 3130613917168168459}
 --- !u!1 &3130613917354495764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,8 +961,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3130613917354495765}
-  - component: {fileID: 3130613917354495762}
   - component: {fileID: 3130613917354495763}
+  - component: {fileID: 929718304}
   m_Layer: 0
   m_Name: Sound2
   m_TagString: Untagged
@@ -1024,50 +985,6 @@ Transform:
   m_Father: {fileID: 2975447580075394157}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &3130613917354495762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3130613917354495764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfbd9d447b7f9a498363cc99fc4df2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToToggleType: 3
-  objectToToggle: {fileID: 0}
-  OnToggleOn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3130613917492168795}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnToggleOff:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3130613917492168795}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!82 &3130613917354495763
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1080,7 +997,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 6953b44c16aeea24ea06ee553672cbfe, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3a3adcf10bbbbde4a8ebc0eafe8d4aae, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1164,6 +1081,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &929718304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130613917354495764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c91aec6c8a9406468bf64a7587890eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 3130613917354495763}
 --- !u!1 &3130613917492168796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,8 +1103,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3130613917492168797}
-  - component: {fileID: 3130613917492168794}
   - component: {fileID: 3130613917492168795}
+  - component: {fileID: 836480520}
   m_Layer: 0
   m_Name: Sound4
   m_TagString: Untagged
@@ -1197,50 +1127,6 @@ Transform:
   m_Father: {fileID: 2975447580075394157}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &3130613917492168794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3130613917492168796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfbd9d447b7f9a498363cc99fc4df2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToToggleType: 3
-  objectToToggle: {fileID: 0}
-  OnToggleOn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3130613917492168795}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnToggleOff:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3130613917492168795}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!82 &3130613917492168795
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1253,7 +1139,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 6953b44c16aeea24ea06ee553672cbfe, type: 2}
   m_audioClip: {fileID: 8300000, guid: 058a431c456c1fe4aaaf269770292c70, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1337,6 +1223,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &836480520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130613917492168796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c91aec6c8a9406468bf64a7587890eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 3130613917492168795}
 --- !u!1 &5437519993602224201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,8 +1247,8 @@ GameObject:
   - component: {fileID: 378675101725169227}
   - component: {fileID: 4813957197139657578}
   - component: {fileID: 3782799452956978566}
-  - component: {fileID: 4813957197139657579}
-  - component: {fileID: 4813957197139657576}
+  - component: {fileID: 1033528938}
+  - component: {fileID: 1033528937}
   m_Layer: 0
   m_Name: hifi_button1
   m_TagString: Untagged
@@ -1422,8 +1321,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4813957197139657579
-SphereCollider:
+--- !u!65 &1033528938
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1431,11 +1330,11 @@ SphereCollider:
   m_GameObject: {fileID: 5437519993602224201}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.048829548
-  m_Center: {x: -0.12300187, y: -0.11578047, z: 0.27735904}
---- !u!114 &4813957197139657576
+  m_Size: {x: 0.097659044, y: 0.097659044, z: 0.03756803}
+  m_Center: {x: -0.123002045, y: -0.11577999, z: 0.27735913}
+--- !u!114 &1033528937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1444,24 +1343,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5437519993602224201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4604318b8c4be89929a8baa6e0db25, type: 3}
+  m_Script: {fileID: 11500000, guid: 99888ee84696ace4fa99623acd356b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: c0d8e7158fc719447a22dc5a55b3c109, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  RelatedToggleProblem: {fileID: 0}
+      m_Calls: []
+  RelatedToggleProblem: {fileID: 667788216}
   ElementToToggle:
-  - {fileID: 3130613917492168794}
+  - {fileID: 2112916845}
+  - {fileID: 836480520}

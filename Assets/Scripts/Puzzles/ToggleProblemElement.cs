@@ -17,7 +17,7 @@ public class ToggleProblemElement : MonoBehaviour
     public UnityEvent OnToggleOn;
     public UnityEvent OnToggleOff;
 
-    private bool Value = false;
+    public  bool Value = false;
 
     public bool Toggle()
     {
