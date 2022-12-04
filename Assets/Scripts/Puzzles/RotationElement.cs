@@ -4,8 +4,9 @@ public class RotationElement : InteractivePuzzleElement
 {
     public RotationProblem RelatedRotationProblem;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         RelatedRotationProblem.Init();
     }
     

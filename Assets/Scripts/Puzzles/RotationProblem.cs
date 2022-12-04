@@ -14,6 +14,6 @@ public class RotationProblem : Problem
     
     public void CheckRotation()
     {
-        SetSolveStatus(Mathf.Abs(m_startAngle - Mathf.Abs(transform.eulerAngles.y) - RotationToSolveProblem) < Delta);
+        SetSolveStatus(RotationToSolveProblem - Mathf.Abs(m_startAngle - Mathf.Abs(transform.eulerAngles.y)) < Delta);
     }
 }

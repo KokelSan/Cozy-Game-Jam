@@ -125,13 +125,14 @@ public class InputManager : MonoBehaviour
             if (hitInfo.collider.TryGetComponent(out Puzzle puzzle))
             {
                 if (log) Debug.Log("Overing object");
-                // TODO : Start overing
+                m_OveredPuzzle = puzzle;
+                m_OveredPuzzle.Overing(true);
             }
         }
         else if (m_OveredPuzzle != null)
         {
             if (log) Debug.Log("Overing finished");
-            // TODO : Stop overing
+            m_OveredPuzzle.Overing(false);
         }
     }
 
