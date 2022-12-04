@@ -1,10 +1,21 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Outline))]
 public class Puzzle : MonoBehaviour
 {   
+    [Serializable]
+    public struct Events
+    {
+        public UnityEvent onSelect;
+        public UnityEvent onUnSelect;
+        public UnityEvent onOvering;
+    }
+    
+    public Events events;
+    
     public List<InteractivePuzzleElement> InteractiveElements = new List<InteractivePuzzleElement>();
     private Outline m_outline;
 
@@ -15,20 +26,20 @@ public class Puzzle : MonoBehaviour
 
     public virtual void Select()
     {
+        events.onSelect?.Invoke();
         foreach (InteractivePuzzleElement element in InteractiveElements)
         {
             element.SetActive(true);
         }        
-        //LevelManager.Instance.CurrentPuzzle = this;
     }
 
     public virtual void UnSelect()
     {
+        events.onUnSelect?.Invoke();
         foreach (InteractivePuzzleElement element in InteractiveElements)
         {
             element.SetActive(false);
         }
-        //LevelManager.Instance.CurrentPuzzle = null;
     }
 
     public bool CheckIfElementBelongsToPuzzle(InteractivePuzzleElement element)
@@ -38,6 +49,7 @@ public class Puzzle : MonoBehaviour
 
     public void Overing(bool flag)
     {
+        events.onOvering?.Invoke();
         m_outline.enabled = flag;
     }
 }

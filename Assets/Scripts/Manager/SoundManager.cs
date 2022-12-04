@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     [Min(1)] [Tooltip("Generally 8 on mobile and 32 on PC")] [SerializeField]
     public int m_MaxAudioTrack = 8;
 
-    private List<AudioSource> m_EffectsSource;
+    private List<AudioSource> m_EffectsSource = new List<AudioSource>();
     private AudioSource m_AmbienceSource;
     private AudioSource m_MusicSource;
     private int m_CurrentTrackIndex = 0;
@@ -63,6 +63,8 @@ public class SoundManager : MonoBehaviour
             {
                 m_EffectsSource[i].clip = clip;
                 m_EffectsSource[i].Play();
+                m_CurrentTrackIndex = (m_CurrentTrackIndex + 1) % m_EffectsSource.Count;
+                return;
             }
 
             m_CurrentTrackIndex = (m_CurrentTrackIndex + 1) % m_EffectsSource.Count;
