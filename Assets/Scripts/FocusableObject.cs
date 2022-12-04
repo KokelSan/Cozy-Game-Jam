@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class FocusableObject : MonoBehaviour
 {
     public bool MoveParentTransform;
+    public bool LerpRotation;
     public float DepthOffsetWhenFocused;
     public float FocusTranslationDuration;
     public float UnFocusTranslationDuration;
@@ -74,7 +75,8 @@ public class FocusableObject : MonoBehaviour
 
             float t = m_FocusMovementAnimation.Evaluate(step / translationTime);
             m_TransformToMove.position = Vector3.LerpUnclamped(startPos, targetPosition, t);
-            m_TransformToMove.rotation = Quaternion.SlerpUnclamped(startRot, targetRotation, t);
+            if (LerpRotation)
+                m_TransformToMove.rotation = Quaternion.SlerpUnclamped(startRot, targetRotation, t);
             yield return new WaitForFixedUpdate();
         }
     }
