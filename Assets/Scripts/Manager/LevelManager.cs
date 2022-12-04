@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public struct Events
     {
         public UnityEvent onStart;
+        public UnityEvent onProblemSolved;
         public UnityEvent onWin;
     }
 
@@ -41,9 +42,11 @@ public class LevelManager : MonoBehaviour
     void OnProblemSolved()
     {
         m_ProblemUnsolvedCount--;
-        
+
         if (m_ProblemUnsolvedCount <= 0)
             Win();
+        else
+            events.onProblemSolved?.Invoke();
     }
     
     void OnProblemUnsolved()
