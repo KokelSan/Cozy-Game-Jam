@@ -51,14 +51,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alphascale: 1
+    - _Alphascale: 2
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _DisolveAmont: 1.2
     - _DisolveScale: 2
     - _DistorsionScale: 5
     - _DistortionAmount: 0.1
-    - _EmisiveScale: 1
+    - _EmisiveScale: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
