@@ -56,9 +56,9 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _DisolveAmont: 1.2
     - _DisolveScale: 2
-    - _DistorsionScale: 5
-    - _DistortionAmount: 0.05
-    - _EmisiveScale: 100
+    - _DistorsionScale: 2
+    - _DistortionAmount: 0
+    - _EmisiveScale: 70
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
