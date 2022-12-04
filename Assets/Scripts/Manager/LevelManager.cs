@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
         public UnityEvent onProblemSolved;
         public UnityEvent onWin;
     }
-
+    
     public Events events;
     Problem[] problems;
     public static LevelManager m_Instance;

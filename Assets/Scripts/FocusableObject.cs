@@ -1,9 +1,19 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class FocusableObject : MonoBehaviour
 {
+    [Serializable]
+    public struct Events
+    {
+        public UnityEvent onFocus;
+    }
+    
+    public Events events;
+    
     public bool MoveParentTransform;
     public bool LerpRotation;
     public float DepthOffsetWhenFocused;
@@ -50,6 +60,7 @@ public class FocusableObject : MonoBehaviour
 
     public void Focus()
     {
+        events.onFocus?.Invoke();
         StartCoroutine(MoveToPosition(m_Camera.transform.position + m_Camera.transform.forward * DepthOffsetWhenFocused, Quaternion.identity, FocusTranslationDuration));
     }
 

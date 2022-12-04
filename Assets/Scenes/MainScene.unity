@@ -435,6 +435,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81e93135cf92ce4c9f6d09afa032ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events:
+    onFocus:
+      m_PersistentCalls:
+        m_Calls: []
   MoveParentTransform: 0
   LerpRotation: 0
   DepthOffsetWhenFocused: 3
@@ -557,7 +561,7 @@ Transform:
   - {fileID: 586242120}
   - {fileID: 130632318}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &181150201
 MonoBehaviour:
@@ -877,7 +881,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &454704837
 GameObject:
@@ -918,7 +922,7 @@ Transform:
   - {fileID: 934627017}
   - {fileID: 531307269}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &454704839
 BoxCollider:
@@ -1153,37 +1157,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.23716688, y: 0.45501995, z: 0.18855834}
   m_Center: {x: 2.4005287, y: 0.68183076, z: -0.34509563}
---- !u!1 &483308005
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 483308006}
-  m_Layer: 0
-  m_Name: Enviro
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &483308006
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 483308005}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.13, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &531307267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,7 +1301,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &580701501
 GameObject:
@@ -1594,7 +1567,7 @@ RectTransform:
   - {fileID: 199041433}
   - {fileID: 1893206178}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2161,7 +2134,7 @@ Transform:
   - {fileID: 827118194}
   - {fileID: 1363812849}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -93.195, z: 0}
 --- !u!114 &738535473
 MonoBehaviour:
@@ -2734,7 +2707,7 @@ Transform:
   m_Children:
   - {fileID: 990461761}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &758372977
 MonoBehaviour:
@@ -2833,6 +2806,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81e93135cf92ce4c9f6d09afa032ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events:
+    onFocus:
+      m_PersistentCalls:
+        m_Calls: []
   MoveParentTransform: 0
   LerpRotation: 0
   DepthOffsetWhenFocused: 2
@@ -3281,7 +3258,7 @@ Transform:
   m_Children:
   - {fileID: 1680285258}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &940854692
 BoxCollider:
@@ -3483,14 +3460,14 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.7688679, g: 0.85864645, b: 1, a: 0}
+  m_projectionMatrixMode: 2
+  m_GateFitMode: 4
   m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
+  m_SensorSize: {x: 3.18, y: 1.72}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 2.4422023
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -3499,7 +3476,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 40
+  field of view: 38.79853
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -4125,7 +4102,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1729187863520732210, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1729187863520732210, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4181,6 +4158,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
+--- !u!1 &1242202896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1242202898}
+  - component: {fileID: 1242202897}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1242202897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242202896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6359517aa4d4e84e9f7d7b530dc4c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxAudioTrack: 8
+  m_SFXMixer: {fileID: 24300002, guid: 855e553f919632c4b9a2cdde5c39948c, type: 2}
+  m_AmbienceMixer: {fileID: 24300002, guid: 076789bdf2ecdbd41b530a6c7cadda63, type: 2}
+  m_MusicMixer: {fileID: 24300002, guid: 6953b44c16aeea24ea06ee553672cbfe, type: 2}
+--- !u!4 &1242202898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242202896}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1245150075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4262,7 +4287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1292259741
 GameObject:
@@ -4663,7 +4688,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1547179430
 GameObject:
@@ -4695,6 +4720,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddad282d8d006c44cb9c0321f5f7b191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events:
+    onClickNotValid:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1242202897}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: a94f5a4571b0fa743be3d58af2e4580a, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   log: 0
 --- !u!4 &1547179432
 Transform:
@@ -4709,7 +4750,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1547179433
 MonoBehaviour:
@@ -5446,10 +5487,46 @@ MonoBehaviour:
   events:
     onStart:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1242202897}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayMusic
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: aa4125f93785d9d4782445774f4e5ab5, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1242202897}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayAmbience
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: a6d3ee5774c17b448b2ba5ccb3d0ed71, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onProblemSolved:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1242202897}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 6990c2cf95c3ab1498138584c291eddc, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onWin:
       m_PersistentCalls:
         m_Calls:
@@ -5478,7 +5555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1926054278
 GameObject:

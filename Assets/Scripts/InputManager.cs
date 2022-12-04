@@ -1,9 +1,17 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    //private ObjectManager m_ObjectManager;
+    [Serializable]
+    public struct Events
+    {
+        public UnityEvent onClickNotValid;
+    }
+
+    public Events events;
 
     private Camera m_Camera;
     private Mouse m_Mouse;
@@ -18,7 +26,6 @@ public class InputManager : MonoBehaviour
     {
         m_Camera = Camera.main;
         m_Mouse = Mouse.current;
-        //m_ObjectManager = FindObjectOfType<ObjectManager>();
     }
 
     public void OnLeftClick(InputValue input)
@@ -78,6 +85,8 @@ public class InputManager : MonoBehaviour
             {
                 if (log) Debug.Log("No collision");
                 UnSelectObjects();
+                
+                events.onClickNotValid?.Invoke();
             }
         }
         else
