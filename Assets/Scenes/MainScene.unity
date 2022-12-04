@@ -2839,7 +2839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.4
+      value: 3.438
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2847,31 +2847,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.48027787
+      value: 0.4835784
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.07029626
+      value: -0.01153667
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8734401
+      value: -0.87520444
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.03865374
+      value: -0.0059962277
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -7.761
+      value: -1.241
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -122.727
+      value: -122.165
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911057993, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 4.96
+      value: 0.825
       objectReference: {fileID: 0}
     - target: {fileID: 5923222616911058005, guid: 6febfcd8260cb874592fbe8094ff9ee9, type: 3}
       propertyPath: m_Name
@@ -2905,7 +2905,7 @@ PrefabInstance:
     - target: {fileID: 6999013009989673429, guid: 28cba1033bba1f042814142dc8c54bf2, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 8300000, guid: 714a0c76d4317744ba99de126346ce7d, type: 3}
+      objectReference: {fileID: 8300000, guid: 0511e47b67d54454785da48f5a93c2ff, type: 3}
     - target: {fileID: 6999013009989673429, guid: 28cba1033bba1f042814142dc8c54bf2, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
