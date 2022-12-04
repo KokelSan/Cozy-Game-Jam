@@ -95,6 +95,7 @@ public class CameraMovement : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
+        IsMoving = false;
         m_baseRotation = transform.rotation;
     }
 }
