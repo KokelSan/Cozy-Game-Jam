@@ -17,6 +17,7 @@ public class FocusableObject : MonoBehaviour
     public bool MoveParentTransform;
     public bool LerpRotation;
     public float DepthOffsetWhenFocused;
+    public Vector3 FocusedRotation;
     public float FocusTranslationDuration;
     public float UnFocusTranslationDuration;
     public float RotationSpeed;
@@ -63,7 +64,7 @@ public class FocusableObject : MonoBehaviour
     public void Focus()
     {
         events.onFocus?.Invoke();
-        StartCoroutine(MoveToPosition(m_Camera.transform.position + m_Camera.transform.forward * DepthOffsetWhenFocused, Quaternion.identity, FocusTranslationDuration));
+        StartCoroutine(MoveToPosition(m_Camera.transform.position + m_Camera.transform.forward * DepthOffsetWhenFocused, Quaternion.Euler(FocusedRotation), FocusTranslationDuration));
     }
 
     public void UnFocus()

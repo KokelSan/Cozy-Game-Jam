@@ -39,6 +39,8 @@ public class LevelManager : MonoBehaviour
 
     void OnProblemSolved()
     {
+        Debug.Log("ProblemSolved");
+
         m_solvedProblemCount++;
 
         if (m_solvedProblemCount >= problems.Length)
