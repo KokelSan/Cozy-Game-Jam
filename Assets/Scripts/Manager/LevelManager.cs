@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     public Events events;
     Problem[] problems;
     public static LevelManager m_Instance;
-    private int m_ProblemUnsolvedCount;
+    private int m_solvedProblemCount = 0;
 
     public static LevelManager Instance
     {
@@ -31,27 +31,20 @@ public class LevelManager : MonoBehaviour
         events.onStart?.Invoke();
         problems = FindObjectsOfType<Problem>();
 
-        m_ProblemUnsolvedCount = problems.Length;
         foreach (Problem problem in problems)
         {
             problem.onSolved.AddListener(OnProblemSolved);
-            problem.onUnSolved.AddListener(OnProblemUnsolved);
         }
     }
 
     void OnProblemSolved()
     {
-        m_ProblemUnsolvedCount--;
+        m_solvedProblemCount++;
 
-        if (m_ProblemUnsolvedCount <= 0)
+        if (m_solvedProblemCount >= problems.Length)
             Win();
         else
             events.onProblemSolved?.Invoke();
-    }
-    
-    void OnProblemUnsolved()
-    {
-        m_ProblemUnsolvedCount++;
     }
 
     void Win()

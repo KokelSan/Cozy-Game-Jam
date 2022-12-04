@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Outline))]
 public class Puzzle : MonoBehaviour
 {   
     [Serializable]
@@ -17,11 +16,14 @@ public class Puzzle : MonoBehaviour
     public Events events;
     
     public List<InteractivePuzzleElement> InteractiveElements = new List<InteractivePuzzleElement>();
-    private Outline m_outline;
+    public BoxCollider[] m_Colliders;
 
-    private void Awake()
+    private InteractivePuzzleElement m_OverredElement = null;     
+    private Outline m_Outline;
+
+    private void Start()
     {
-        m_outline = GetComponent<Outline>();
+        m_Outline = GetComponent<Outline>();
     }
 
     public virtual void Select()
@@ -47,9 +49,62 @@ public class Puzzle : MonoBehaviour
         return InteractiveElements.Contains(element);
     }
 
-    public void Overing(bool flag)
+    public void SetPuzzleActive(bool state)
     {
         events.onOvering?.Invoke();
-        m_outline.enabled = flag;
+
+        foreach (BoxCollider col in m_Colliders)
+        {
+            col.enabled = state;
+        }   
+    }
+
+    public bool ManageOverring(Ray ray) 
+    {
+        if (m_Outline)
+        {
+            m_Outline.enabled = true;
+            return true;
+        }
+        else
+        {
+            return OverInteractiveElement(ray);
+        }        
+    }
+
+    private bool OverInteractiveElement(Ray ray)
+    {
+        Select();
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            if (hitInfo.collider.TryGetComponent(out InteractivePuzzleElement element))
+            {
+                if (m_OverredElement)
+                {
+                    m_OverredElement.Over(false);
+                }
+
+                element.Over(true);
+                m_OverredElement = element;
+            }
+        }
+
+        UnSelect();
+
+        return m_OverredElement == null;
+    }
+
+    public void StopOverring()
+    {
+        if (m_Outline)
+        {
+            m_Outline.enabled = false;
+        }
+        else if (m_OverredElement)
+        {
+            m_OverredElement.Over(false);
+            m_OverredElement = null;
+        }
     }
 }

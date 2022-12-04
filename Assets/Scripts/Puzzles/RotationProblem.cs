@@ -3,8 +3,17 @@ using UnityEngine;
 
 public class RotationProblem : Problem
 {
+    public FocusableObject FocusableObject;
     public float RotationToSolveProblem;
     public float Delta;
+
+    private void Update()
+    {
+        if (FocusableObject.IsHeld)
+        {
+            CheckRotation();
+        }
+    }
 
     public void CheckRotation()
     {

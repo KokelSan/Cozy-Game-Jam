@@ -30,40 +30,36 @@ public class InputManager : MonoBehaviour
 
     public void OnLeftClick(InputValue input)
     {
-        if (log) Debug.Log("Click");
-
         if (input.isPressed)
         {
             Vector2 mousePosition = m_Mouse.position.ReadValue();
             Ray ray = m_Camera.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y));
             if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
-                if (log) Debug.Log("Collision");
-
                 bool isImportantObject = false;
-
-                if (hitInfo.collider.TryGetComponent(out FocusableObject focusableObject))
-                {
-                    if (focusableObject != m_FocusedObject)
-                    {
-                        focusableObject.Focus();
-                        m_FocusedObject = focusableObject;
-                    }
-
-                    m_FocusedObject.Drag(true);
-                    isImportantObject = true;
-                }
 
                 if (hitInfo.collider.TryGetComponent(out Puzzle puzzle))
                 {
                     if (puzzle != m_SelectedPuzzle)
                     {
-                        if (log) Debug.Log("Selecting object");
+                        if (log) Debug.Log("Selecting new puzzle");
+                        UnSelectObjects();                        
                         puzzle.Select();
                         m_SelectedPuzzle = puzzle;
                         isImportantObject = true;
                     }
+
+                    if (CheckIfFocusable(hitInfo.collider.gameObject))
+                    {
+                        if (log) Debug.Log("Focusable puzzle");
+                        isImportantObject = true;
+                    }
                 }
+                else if(CheckIfFocusable(hitInfo.collider.gameObject))
+                {
+                    if (log) Debug.Log("Only focusable");
+                    isImportantObject = true;
+                }                
 
                 if (m_SelectedPuzzle && hitInfo.collider.TryGetComponent(out InteractivePuzzleElement puzzleElement))
                 {
@@ -83,7 +79,6 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                if (log) Debug.Log("No collision");
                 UnSelectObjects();
                 
                 events.onClickNotValid?.Invoke();
@@ -114,6 +109,26 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public bool CheckIfFocusable(GameObject objectToCheck)
+    {
+        if (objectToCheck.TryGetComponent(out FocusableObject focusObject))
+        {
+            if (focusObject != m_FocusedObject)
+            {
+                focusObject.Focus();
+                m_FocusedObject = focusObject;
+                return true;
+            }
+            else if(m_FocusedObject)
+            {
+                if (log) Debug.Log("Dragging");
+                m_FocusedObject.Drag(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void OnLook(InputValue input)
     {
         Vector2 mousePosition = m_Mouse.position.ReadValue();
@@ -123,15 +138,28 @@ public class InputManager : MonoBehaviour
         {
             if (hitInfo.collider.TryGetComponent(out Puzzle puzzle))
             {
-                if (log) Debug.Log("Overing object");
-                m_OveredPuzzle = puzzle;
-                m_OveredPuzzle.Overing(true);
+                if (m_FocusedObject == null && m_SelectedPuzzle != puzzle)
+                {
+                    if (puzzle.ManageOverring(ray))
+                    {
+                        m_OveredPuzzle = puzzle;
+                    }                    
+                }
+            }
+            else if(m_OveredPuzzle != null)
+            {
+                StopOverring();
             }
         }
         else if (m_OveredPuzzle != null)
         {
-            if (log) Debug.Log("Overing finished");
-            m_OveredPuzzle.Overing(false);
+            StopOverring();
         }
+    }
+
+    private void StopOverring()
+    {
+        m_OveredPuzzle.StopOverring();
+        m_OveredPuzzle = null;
     }
 }

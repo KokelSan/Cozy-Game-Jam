@@ -29,6 +29,8 @@ public class FocusableObject : MonoBehaviour
 
     public AnimationCurve m_FocusMovementAnimation;
 
+    public bool IsHeld => m_IsHeld;
+    [SerializeField]
     private bool m_IsHeld;
 
     private void Start()
