@@ -99,7 +99,8 @@ public class InputManager : MonoBehaviour
         if (m_IsHolding)
         {
             if (log) Debug.Log("Dropping");
-            m_FocusedObject.Drag(false);
+            if (m_FocusedObject)
+                m_FocusedObject.Drag(false);
             m_IsHolding = false;
         }
         else if(input.isPressed)

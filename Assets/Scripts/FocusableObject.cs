@@ -32,8 +32,8 @@ public class FocusableObject : MonoBehaviour
         else
         {
             m_TransformToMove = transform;
-            m_InitialPosition = transform.position;
-            m_InitialRotation = transform.rotation;
+            m_InitialPosition = m_TransformToMove.position;
+            m_InitialRotation = m_TransformToMove.rotation;
         }        
     }
 

@@ -1,17 +1,16 @@
-//using System;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.Events;
+using UnityEngine;
 
-//[RequireComponent(typeof(Collider))]
-//[RequireComponent(typeof(FocusableObject))]
-//public class RotationElement : InteractivePuzzleElement
-//{
-//    public RotationProblem RelatedRotationProblem;
-//    public FocusableObject RelatedFocusableObject;
+public class RotationElement : InteractivePuzzleElement
+{
+    public RotationProblem RelatedRotationProblem;
 
-//    private void Update()
-//    {
-        
-//    }
-//}
+    void Start()
+    {
+        RelatedRotationProblem.Init();
+    }
+    
+    private void Update()
+    {
+        RelatedRotationProblem.CheckRotation();
+    }
+}
