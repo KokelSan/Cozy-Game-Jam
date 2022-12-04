@@ -717,8 +717,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad085dfe715440dba8930d57ccb4afe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ContextualPositions: []
+  m_MovementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   VerticalAmplitude: 0.2
   HorizontalAmplitude: 1.5
+  IsMoving: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +767,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 407973514245438818, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 506781924046493881, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -957,7 +969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6616969538334108496, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6844533382448221479, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1067,13 +1079,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7500831937012156969, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.643
+      objectReference: {fileID: 0}
     - target: {fileID: 7548731764733585486, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7783925609611171713, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7823521565945170683, guid: 7f85eed0fb0d24749a46f7d62c766f7d, type: 3}
       propertyPath: m_LocalPosition.y
