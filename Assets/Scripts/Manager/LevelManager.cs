@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,6 +18,8 @@ public class LevelManager : MonoBehaviour
     Problem[] problems;
     public static LevelManager m_Instance;
     private int m_solvedProblemCount = 0;
+
+    public GameObject winPanel;
 
     public static LevelManager Instance
     {
@@ -52,5 +56,14 @@ public class LevelManager : MonoBehaviour
     void Win()
     {
         events.onWin?.Invoke();
+        winPanel.SetActive(true);
+        StartCoroutine(ReturnToMenu());
     }    
+    
+    private IEnumerator ReturnToMenu()
+    {
+        yield return new WaitForSeconds(3);
+        winPanel.SetActive(false);
+        Camera.main.GetComponent<CameraMovement>().GoToMenuContext();
+    }
 }
