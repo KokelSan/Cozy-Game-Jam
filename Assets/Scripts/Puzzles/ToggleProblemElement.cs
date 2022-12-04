@@ -1,17 +1,21 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum ObjectType
 {
     GameObject,
     MeshRenderer,
-    Light
+    Light,
+    NONE
 }
 
 public class ToggleProblemElement : MonoBehaviour
 {
     public ObjectType objectToToggleType;
     public GameObject objectToToggle;
+    public UnityEvent OnToggleOn;
+    public UnityEvent OnToggleOff;
 
     private bool Value = false;
 
@@ -32,6 +36,13 @@ public class ToggleProblemElement : MonoBehaviour
                 break;
             default:
                 break;
+        }
+        
+        if (Value)
+            OnToggleOn?.Invoke();
+        else
+        {
+            OnToggleOff?.Invoke();
         }
 
         return Value;
